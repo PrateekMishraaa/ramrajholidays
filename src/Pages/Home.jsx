@@ -3,6 +3,11 @@ import Navbar from '../Components/Navbar';
 import Video from "../assets/Video/homepage.mp4";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Boy from "../assets/boy.webp"
+import Car from "../assets/car.webp"
+import Planet from "../assets/planet.webp"
+import Rammandir from "../assets/rammandir.webp"
+import Janakpur from "../assets/janakpur.webp"
+import Matale from "../assets/matale.webp"
 
 const Home = () => {
   const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
@@ -140,27 +145,78 @@ const Home = () => {
               </button>
             </div>
           </div>
-         
+
         </div>
-        <div className="w-full px-8 py-16 bg-white">
-  <h2 className="text-4xl font-serif font-semibold text-slate-800 text-center mb-8">Discover & Book <span className='text-xs text-slate-800 font-serif font-semibold'>Next Adventure</span></h2>
-  <div className="flex flex-col md:flex-row justify-center gap-6">
-    <div className="h-[60vh] w-full md:w-1/3 border-2 rounded-2xl flex items-center justify-center ">
-      <img src={Boy} alt="" className='h-[70%] mb-44' />
+        <div className="w-full absolute top-[75%] z-10 px-6 md:px-20">
+          <h2 className="text-4xl font-serif font-semibold text-white text-center mb-8 drop-shadow-md">
+            Discover & Book <br />
+            <span className="text-base font-normal">Your Next Adventure</span>
+          </h2>
+
+          <div className="relative flex justify-center items-center gap-6 overflow-hidden">
+            {/* Left Arrow */}
+            <div className="absolute left-0 z-20 cursor-pointer bg-white rounded-full p-2 shadow-md">
+              {/* Replace with Icon */}
+              <span>&lt;</span>
+            </div>
+
+            {/* Cards */}
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 w-full">
+              <div className="bg-[#f3e8ff] h-[60vh] w-full md:w-1/3 rounded-2xl shadow-lg flex flex-col items-center justify-end py-6 px-4 text-center">
+                <img src={Boy} alt="Travel" className="h-[60%] object-contain mb-4" />
+                <h3 className="font-semibold text-3xl font-serif text-gray-800">Book Your</h3>
+                <h2 className="text-2xl font-bold text-gray-800 text-4xl font-serif">Travel Package</h2>
+                <a href="#" className="text-blue-600 text-sm mt-2 font-serif font-semibold border-2 p-2 rounded-xl hover:bg-black text-yellow-800 transition">Book Now</a>
+              </div>
+
+              <div className="bg-[#f3e8ff] h-[60vh] w-full md:w-1/3 rounded-2xl shadow-lg flex flex-col items-center justify-end py-6 px-4 text-center">
+                <img src={Car} alt="Car Rentals" className="h-[60%] object-contain mb-4" />
+                <h3 className="font-semibold text-3xl font-serif text-gray-800">Book Your</h3>
+                <h2 className="text-2xl font-bold text-gray-800 text-4xl font-serif">Car Rental</h2>
+                <a href="#" className="text-blue-600 text-sm mt-2 font-serif font-semibold border-2 p-2 rounded-xl hover:bg-black text-yellow-800 transition">Book Now</a>
+              </div>
+
+              <div className="bg-[#f3e8ff] h-[60vh] w-full md:w-1/3 rounded-2xl shadow-lg flex flex-col items-center justify-end py-6 px-4 text-center">
+                <img src={Planet} alt="Destinations" className="h-[60%] object-contain mb-4" />
+                <h3 className="font-semibold text-3xl font-serif text-gray-800">Explore</h3>
+                <h2 className="text-2xl font-bold text-gray-800 text-4xl font-serif">Destinations</h2>
+                <a href="#" className="text-blue-600 text-sm mt-2 font-serif font-semibold border-2 p-2 rounded-xl hover:bg-black text-yellow-800 transition">Explore</a>
+              </div>
+            </div>
+
+            {/* Right Arrow */}
+            <div className="absolute right-0 z-20 cursor-pointer bg-white rounded-full p-2 shadow-md">
+              {/* Replace with Icon */}
+              <span>&gt;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="h-[70vh] w-full relative top-80">
+  <p className="text-5xl font-semibold absolute left-[35%] top-6 font-serif text-gray-600">
+    Top <span className="text-orange-400">Destinations</span>
+  </p>
+  <p className="top-28 left-[38%] absolute text-xl font-serif text-gray-600">
+    Book Your Ramayana Trail With Us!
+  </p>
+  <div className="h-66 w-full flex justify-between relative top-36 p-20 gap-4">
+    <div className="h-60 w-[35%] overflow-hidden rounded-xl relative">
+      <img src={Rammandir} alt="RamMandir Image" className="h-full w-full object-cover opacity-0.6" />
+      <p className='absolute right-10  text-4xl font-semibold font-serif bottom-6 '>INDIA</p>
+      <p className='absolute right-20  text-xs font-semibold font-serif bottom-1 '>Starting from</p>
     </div>
-    <div className="h-[60vh] w-full md:w-1/3 border-2 rounded-2xl flex items-center justify-center">
-      2
+    <div className="h-60 w-[35%]  overflow-hidden rounded-xl relative">
+      <img src={Janakpur} alt="JanakPuri Image" className="h-full w-full object-cover opacity-0.6" />
+      <p className='absolute right-10 text-white text-4xl font-semibold font-serif bottom-6 '>INDIA</p>
+      <p className='absolute right-20 text-white text-xs font-semibold font-serif bottom-1 '>Starting from</p>
     </div>
-    <div className="h-[60vh] w-full md:w-1/3 border-2 rounded-2xl flex items-center justify-center">
-      3
+    <div className="h-60 w-[35%]  overflow-hidden rounded-xl relative">
+      <img src={Matale} alt="Matale Image" className="h-full w-full object-cover opacity-0.6" />
+      <p className='absolute right-10  text-4xl font-semibold font-serif bottom-6 '>INDIA</p>
+      <p className='absolute right-20 text-white text-xs font-semibold font-serif bottom-1 '>Starting from</p>
     </div>
   </div>
 </div>
-
-    
-
-
-      </div>
     </>
   );
 };
