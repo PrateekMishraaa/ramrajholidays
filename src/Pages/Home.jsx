@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../Components/Navbar';
 import Video from "../assets/Video/homepage.mp4";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import Boy from "../assets/boy.webp"
 
 const Home = () => {
   const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
@@ -139,46 +140,26 @@ const Home = () => {
               </button>
             </div>
           </div>
+         
         </div>
+        <div className="w-full px-8 py-16 bg-white">
+  <h2 className="text-4xl font-serif font-semibold text-slate-800 text-center mb-8">Discover & Book <span className='text-xs text-slate-800 font-serif font-semibold'>Next Adventure</span></h2>
+  <div className="flex flex-col md:flex-row justify-center gap-6">
+    <div className="h-[60vh] w-full md:w-1/3 border-2 rounded-2xl flex items-center justify-center ">
+      <img src={Boy} alt="" className='h-[70%] mb-44' />
+    </div>
+    <div className="h-[60vh] w-full md:w-1/3 border-2 rounded-2xl flex items-center justify-center">
+      2
+    </div>
+    <div className="h-[60vh] w-full md:w-1/3 border-2 rounded-2xl flex items-center justify-center">
+      3
+    </div>
+  </div>
+</div>
 
-        {/* ✨ Card Section - Travel, Car Rentals, Destinations */}
-        <div className="bg-white py-16 px-6 md:px-16 text-center absolute  top-[80%]">
-          <h2 className="text-3xl font-bold text-orange-500 mb-10">Top Destinations</h2>
-          <div className="flex items-center justify-center space-x-4">
-            {/* Left Arrow */}
-            <FaArrowLeft className="text-gray-500 hover:text-orange-500 text-xl cursor-pointer" />
+    
 
-            {/* Cards */}
-            <div className="flex space-x-6 overflow-x-auto no-scrollbar">
-              {/* Card 1 */}
-              <div className="min-w-[240px] bg-purple-100 rounded-xl shadow-lg p-6 flex flex-col items-center transition hover:scale-105">
-                <img src="/icons/travel.png" alt="Travel" className="w-24 h-24 mb-4" />
-                <p className="text-sm text-gray-700 font-semibold mb-2">Book Your</p>
-                <h3 className="text-xl font-bold mb-2">Travel Package</h3>
-                <a href="#" className="text-blue-500 text-sm hover:underline">Book Now</a>
-              </div>
 
-              {/* Card 2 */}
-              <div className="min-w-[240px] bg-purple-100 rounded-xl shadow-lg p-6 flex flex-col items-center transition hover:scale-105">
-                <img src="/icons/car.png" alt="Car" className="w-24 h-24 mb-4" />
-                <p className="text-sm text-gray-700 font-semibold mb-2">Book Your</p>
-                <h3 className="text-xl font-bold mb-2">Car Rentals</h3>
-                <a href="#" className="text-blue-500 text-sm hover:underline">Book Now</a>
-              </div>
-
-              {/* Card 3 */}
-              <div className="min-w-[240px] bg-purple-100 rounded-xl shadow-lg p-6 flex flex-col items-center transition hover:scale-105">
-                <img src="/icons/destination.png" alt="Destination" className="w-24 h-24 mb-4" />
-                <p className="text-sm text-gray-700 font-semibold mb-2">Explore</p>
-                <h3 className="text-xl font-bold mb-2">Destinations</h3>
-                <a href="#" className="text-blue-500 text-sm hover:underline">Explore</a>
-              </div>
-            </div>
-
-            {/* Right Arrow */}
-            <FaArrowRight className="text-gray-500 hover:text-orange-500 text-xl cursor-pointer" />
-          </div>
-        </div>
       </div>
     </>
   );
