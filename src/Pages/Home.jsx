@@ -8,6 +8,9 @@ import Planet from "../assets/planet.webp"
 import Rammandir from "../assets/rammandir.webp"
 import Janakpur from "../assets/janakpur.webp"
 import Matale from "../assets/matale.webp"
+import Ramayan from "../assets/RamayanTrail.webp"
+// import HanumanGarahi from "../assets/hanumangrahi.webp"
+import Panchvati from "../assets/panchvati.webp"
 
 const Home = () => {
   const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
@@ -25,199 +28,169 @@ const Home = () => {
   ];
 
   return (
-    <>
-      <div className="relative">
-        <Navbar />
+    <div className="relative w-full overflow-hidden">
+      <Navbar />
 
-        {/* Video Background Section */}
-        <div className="h-[100vh] w-full relative overflow-hidden">
-          <video
-            src={Video}
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-          <div className="absolute inset-0"></div>
+      {/* Video Background Section */}
+      <div className="h-[100vh] w-full relative">
+        <video
+          src={Video}
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
 
-          {/* Text Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-6 z-10 bottom-32">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg tracking-wide text-blue-800 cursor-pointer hover:text-blue-900 transition">
-              ✨ Plan Your Travel Now!
-            </h1>
-            <p className="text-md sm:text-lg md:text-xl font-medium drop-shadow-md mb-8 text-blue-800 cursor-pointer hover:text-blue-900 transition">
-              Explore Ramayana Train With US!!🌍
-            </p>
-          </div>
+        {/* Overlay Text */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 z-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg text-blue-800 cursor-pointer hover:text-blue-900 transition">
+            ✨ Plan Your Travel Now!
+          </h1>
+          <p className="text-md sm:text-lg md:text-xl font-medium text-blue-800 drop-shadow-md mb-6 cursor-pointer hover:text-blue-900 transition">
+            Explore Ramayana Train With US!!🌍
+          </p>
+        </div>
 
-          {/* Search Bar Overlay */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-[95%] max-w-[1000px] z-20 px-4 bottom-60">
-            <div className="bg-white rounded-xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 px-6 py-6">
-
-              {/* Destination Dropdown */}
-              <div className="relative w-full md:w-[200px]">
-                <button
-                  onClick={() => {
-                    setShowDestinationDropdown(!showDestinationDropdown);
-                    setShowPackageDropdown(false);
-                  }}
-                  className="border px-4 py-2 rounded-md w-full bg-white text-left flex justify-between items-center text-gray-700"
-                >
-                  {selectedDestination}
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {showDestinationDropdown && (
-                  <ul className="absolute z-10 bg-white w-full mt-2 rounded-md shadow-md">
+        {/* Search Bar */}
+        <div className="absolute w-full px-4 sm:px-8 md:px-20 bottom-20 z-20">
+          <div className="bg-white rounded-xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 p-6 max-w-5xl mx-auto">
+            {/* Destination Dropdown */}
+            <div className="relative w-full md:w-1/5">
+              <button
+                onClick={() => {
+                  setShowDestinationDropdown(!showDestinationDropdown);
+                  setShowPackageDropdown(false);
+                }}
+                className="border px-4 py-2 rounded-md w-full bg-white text-left flex justify-between items-center text-gray-700"
+              >
+                {selectedDestination}
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {showDestinationDropdown && (
+                <ul className="absolute z-10 bg-white w-full mt-2 rounded-md shadow-md">
+                  <li
+                    className="px-4 py-2 hover:bg-gray-100 text-orange-500 font-medium"
+                    onClick={() => {
+                      setSelectedDestination("Your destination");
+                      setShowDestinationDropdown(false);
+                    }}
+                  >
+                    Your destination
+                  </li>
+                  {destinations.map((location, idx) => (
                     <li
-                      className="px-4 py-2 hover:bg-gray-100 text-orange-500 font-medium"
+                      key={idx}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer hover:text-orange-500"
                       onClick={() => {
-                        setSelectedDestination("Your destination");
+                        setSelectedDestination(location);
                         setShowDestinationDropdown(false);
                       }}
                     >
-                      Your destination
+                      {location}
                     </li>
-                    {destinations.map((location, idx) => (
-                      <li
-                        key={idx}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer hover:text-orange-500"
-                        onClick={() => {
-                          setSelectedDestination(location);
-                          setShowDestinationDropdown(false);
-                        }}
-                      >
-                        {location}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+                  ))}
+                </ul>
+              )}
+            </div>
 
-              {/* Package Dropdown */}
-              <div className="relative w-full md:w-[200px]">
-                <button
-                  onClick={() => {
-                    setShowPackageDropdown(!showPackageDropdown);
-                    setShowDestinationDropdown(false);
-                  }}
-                  className="border px-4 py-2 rounded-md w-full bg-white text-left flex justify-between items-center text-gray-700"
-                >
-                  {selectedPackage}
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {showPackageDropdown && (
-                  <ul className="absolute z-10 bg-white w-full mt-2 rounded-md shadow-md">
+            {/* Package Dropdown */}
+            <div className="relative w-full md:w-1/5">
+              <button
+                onClick={() => {
+                  setShowPackageDropdown(!showPackageDropdown);
+                  setShowDestinationDropdown(false);
+                }}
+                className="border px-4 py-2 rounded-md w-full bg-white text-left flex justify-between items-center text-gray-700"
+              >
+                {selectedPackage}
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {showPackageDropdown && (
+                <ul className="absolute z-10 bg-white w-full mt-2 rounded-md shadow-md">
+                  <li
+                    className="px-4 py-2 hover:bg-gray-100 text-orange-500 font-medium"
+                    onClick={() => {
+                      setSelectedPackage("Package");
+                      setShowPackageDropdown(false);
+                    }}
+                  >
+                    Package
+                  </li>
+                  {packages.map((pkg, idx) => (
                     <li
-                      className="px-4 py-2 hover:bg-gray-100 text-orange-500 font-medium"
+                      key={idx}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer hover:text-orange-500"
                       onClick={() => {
-                        setSelectedPackage("Package");
+                        setSelectedPackage(pkg);
                         setShowPackageDropdown(false);
                       }}
                     >
-                      Package
+                      {pkg}
                     </li>
-                    {packages.map((pkg, idx) => (
-                      <li
-                        key={idx}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer hover:text-orange-500"
-                        onClick={() => {
-                          setSelectedPackage(pkg);
-                          setShowPackageDropdown(false);
-                        }}
-                      >
-                        {pkg}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              {/* Dates and Search */}
-              <input type="date" className="border px-4 py-2 rounded-md w-full md:w-[160px] text-gray-600" />
-              <input type="date" className="border px-4 py-2 rounded-md w-full md:w-[160px] text-gray-600" />
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md w-full md:w-auto font-semibold transition">
-                Search
-              </button>
-            </div>
-          </div>
-
-        </div>
-        <div className="w-full absolute top-[75%] z-10 px-6 md:px-20">
-          <h2 className="text-4xl font-serif font-semibold text-white text-center mb-8 drop-shadow-md">
-            Discover & Book <br />
-            <span className="text-base font-normal">Your Next Adventure</span>
-          </h2>
-
-          <div className="relative flex justify-center items-center gap-6 overflow-hidden">
-            {/* Left Arrow */}
-            <div className="absolute left-0 z-20 cursor-pointer bg-white rounded-full p-2 shadow-md">
-              {/* Replace with Icon */}
-              <span>&lt;</span>
+                  ))}
+                </ul>
+              )}
             </div>
 
-            {/* Cards */}
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 w-full">
-              <div className="bg-[#f3e8ff] h-[60vh] w-full md:w-1/3 rounded-2xl shadow-lg flex flex-col items-center justify-end py-6 px-4 text-center">
-                <img src={Boy} alt="Travel" className="h-[60%] object-contain mb-4" />
-                <h3 className="font-semibold text-3xl font-serif text-gray-800">Book Your</h3>
-                <h2 className="text-2xl font-bold text-gray-800 text-4xl font-serif">Travel Package</h2>
-                <a href="#" className="text-blue-600 text-sm mt-2 font-serif font-semibold border-2 p-2 rounded-xl hover:bg-black text-yellow-800 transition">Book Now</a>
-              </div>
+            {/* Dates */}
+            <input type="date" className="border px-4 py-2 rounded-md w-full md:w-1/5 text-gray-600" />
+            <input type="date" className="border px-4 py-2 rounded-md w-full md:w-1/5 text-gray-600" />
 
-              <div className="bg-[#f3e8ff] h-[60vh] w-full md:w-1/3 rounded-2xl shadow-lg flex flex-col items-center justify-end py-6 px-4 text-center">
-                <img src={Car} alt="Car Rentals" className="h-[60%] object-contain mb-4" />
-                <h3 className="font-semibold text-3xl font-serif text-gray-800">Book Your</h3>
-                <h2 className="text-2xl font-bold text-gray-800 text-4xl font-serif">Car Rental</h2>
-                <a href="#" className="text-blue-600 text-sm mt-2 font-serif font-semibold border-2 p-2 rounded-xl hover:bg-black text-yellow-800 transition">Book Now</a>
-              </div>
-
-              <div className="bg-[#f3e8ff] h-[60vh] w-full md:w-1/3 rounded-2xl shadow-lg flex flex-col items-center justify-end py-6 px-4 text-center">
-                <img src={Planet} alt="Destinations" className="h-[60%] object-contain mb-4" />
-                <h3 className="font-semibold text-3xl font-serif text-gray-800">Explore</h3>
-                <h2 className="text-2xl font-bold text-gray-800 text-4xl font-serif">Destinations</h2>
-                <a href="#" className="text-blue-600 text-sm mt-2 font-serif font-semibold border-2 p-2 rounded-xl hover:bg-black text-yellow-800 transition">Explore</a>
-              </div>
-            </div>
-
-            {/* Right Arrow */}
-            <div className="absolute right-0 z-20 cursor-pointer bg-white rounded-full p-2 shadow-md">
-              {/* Replace with Icon */}
-              <span>&gt;</span>
-            </div>
+            {/* Search Button */}
+            <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md w-full md:w-auto font-semibold transition">
+              Search
+            </button>
           </div>
         </div>
       </div>
-      <div className="h-[70vh] w-full relative top-80">
-  <p className="text-5xl font-semibold absolute left-[35%] top-6 font-serif text-gray-600">
-    Top <span className="text-orange-400">Destinations</span>
-  </p>
-  <p className="top-28 left-[38%] absolute text-xl font-serif text-gray-600">
-    Book Your Ramayana Trail With Us!
-  </p>
-  <div className="h-66 w-full flex justify-between relative top-36 p-20 gap-4">
-    <div className="h-60 w-[35%] overflow-hidden rounded-xl relative">
-      <img src={Rammandir} alt="RamMandir Image" className="h-full w-full object-cover opacity-0.6" />
-      <p className='absolute right-10  text-4xl font-semibold font-serif bottom-6 '>INDIA</p>
-      <p className='absolute right-20  text-xs font-semibold font-serif bottom-1 '>Starting from</p>
+
+      {/* Discover Section */}
+      <section className="w-full px-4 sm:px-10 md:px-20 pt-16 md:pt-28">
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold text-center text-gray-700 mb-4">
+          Discover & Book <br /><span className="text-base font-normal">Your Next Adventure</span>
+        </h2>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+          {[{img: Boy, title: "Travel Package"}, {img: Car, title: "Car Rental"}, {img: Planet, title: "Destinations"}].map((card, index) => (
+            <div key={index} className="bg-[#f3e8ff] h-[60vh] w-full md:w-1/3 rounded-2xl shadow-lg flex flex-col items-center justify-end py-6 px-4 text-center">
+              <img src={card.img} alt={card.title} className="h-[60%] object-contain mb-4" />
+              <h3 className="font-semibold text-2xl md:text-3xl font-serif text-gray-800">{index < 2 ? 'Book Your' : 'Explore'}</h3>
+              <h2 className="text-xl md:text-2xl font-bold text-gray-800 font-serif">{card.title}</h2>
+              <a href="#" className="text-blue-600 text-sm mt-2 font-serif font-semibold border-2 p-2 rounded-xl hover:bg-black text-yellow-800 transition">
+                {index < 2 ? 'Book Now' : 'Explore'}
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Destinations & Packages Sections */}
+      {["Top Destinations", "Tour Packages"].map((sectionTitle, sectionIndex) => (
+        <section key={sectionIndex} className="w-full px-4 sm:px-10 md:px-20 pt-20">
+          <h2 className="text-3xl md:text-5xl font-semibold font-serif text-center text-gray-600 mb-2">
+            {sectionTitle.split(" ")[0]} <span className="text-orange-400">{sectionTitle.split(" ")[1]}</span>
+          </h2>
+          <p className="text-center text-md md:text-xl font-serif text-gray-600 mb-10">
+            {sectionIndex === 0 ? 'Book Your Ramayana Trail With Us!' : 'FIND YOUR PERFECT SPIRITUAL TOUR OF INDIA'}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {[Rammandir, Janakpur, Matale,Ramayan,Panchvati].map((imgSrc, idx) => (
+              <div key={idx} className="relative rounded-xl overflow-hidden h-72 w-full">
+                <img src={imgSrc} alt={`Location ${idx}`} className="h-full w-full object-cover" />
+                <div className="absolute inset-0  flex flex-col justify-end p-4 text-white">
+                  <p className="text-2xl font-semibold font-serif">INDIA</p>
+                  <p className="text-xs font-serif">Starting from</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
-    <div className="h-60 w-[35%]  overflow-hidden rounded-xl relative">
-      <img src={Janakpur} alt="JanakPuri Image" className="h-full w-full object-cover opacity-0.6" />
-      <p className='absolute right-10 text-white text-4xl font-semibold font-serif bottom-6 '>INDIA</p>
-      <p className='absolute right-20 text-white text-xs font-semibold font-serif bottom-1 '>Starting from</p>
-    </div>
-    <div className="h-60 w-[35%]  overflow-hidden rounded-xl relative">
-      <img src={Matale} alt="Matale Image" className="h-full w-full object-cover opacity-0.6" />
-      <p className='absolute right-10  text-4xl font-semibold font-serif bottom-6 '>INDIA</p>
-      <p className='absolute right-20 text-white text-xs font-semibold font-serif bottom-1 '>Starting from</p>
-    </div>
-  </div>
-</div>
-    </>
   );
 };
 
