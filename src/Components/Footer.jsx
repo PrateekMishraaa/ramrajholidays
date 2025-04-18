@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
+    <>
     <footer className="bg-orange-500 text-white font-semibold py-10 px-6 md:px-20">
       <div className="flex flex-col md:flex-row md:justify-between gap-10">
         {/* Section 1 */}
@@ -48,7 +49,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      
     </footer>
+    <div className='h-10 w-full '>
+      <p className='ml-[35%] '>Copyrights @ 2024 RamRaj Holidays. All Right Reserved</p>
+    </div>
+    </>
   );
 };
 
