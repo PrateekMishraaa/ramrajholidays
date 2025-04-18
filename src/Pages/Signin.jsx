@@ -87,7 +87,7 @@ const Signin = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <section className="min-h-screen w-full flex items-center justify-center bg-gray-100">
         <form className="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-2xl" onSubmit={handleSubmit}>
           <h2 className="text-3xl font-bold text-center text-orange-500 mb-8">Login</h2>
