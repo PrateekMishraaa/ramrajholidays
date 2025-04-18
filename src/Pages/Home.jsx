@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useRef, useEffect } from 'react';
 import Navbar from '../Components/Navbar';
 import Video from "../assets/Video/homepage.mp4";
-import { FaWifi,FaSwimmer } from "react-icons/fa";
-import { MdLunchDining } from "react-icons/md";
+import { FaWifi,FaSwimmer, FaPassport, FaMoneyBillAlt } from "react-icons/fa";
+
+import { gsap } from "gsap";
+
+import { MdEditLocation, MdEventNote, MdHotel, MdLunchDining } from "react-icons/md";
 import { IoTv } from "react-icons/io5";
 import Boy from "../assets/boy.webp"
 import Car from "../assets/car.webp"
@@ -18,6 +21,7 @@ import Jaishreeram3 from "../assets/jaishreeram3.webp"
 import Jaishreeram4 from "../assets/jaishreeram4.webp"
 import Jaishreeram5 from "../assets/jaishreeram5.webp"
 import Jaishreeram6 from "../assets/jaishreeram6.webp"
+import Footer from '../Components/Footer';
 
 const Home = () => {
   const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
@@ -25,7 +29,7 @@ const Home = () => {
 
   const [showPackageDropdown, setShowPackageDropdown] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState("Package");
-
+  const images = [ Jaishreeram1,Jaishreeram2,Jaishreeram3,Jaishreeram4,Jaishreeram5,Jaishreeram6]
   const destinations = ["Any location", "Nepal", "India", "Sri Lanka"];
   const packages = [
     "Ramayana Trail",
@@ -33,6 +37,24 @@ const Home = () => {
     "Ramayana Trail Nepal",
     "Ramayana Trail Sri Lanka",
   ];
+  const spinRef = useRef(null);   // For first spinner
+  const spinnRef = useRef(null);  // For second spinner
+
+  useEffect(() => {
+    gsap.to(spinRef.current, {
+      rotation: 360,
+      duration: 5,
+      ease: "linear",
+      repeat: -1,
+    });
+
+    gsap.to(spinnRef.current, {
+      rotation: 360,
+      duration: 5,
+      ease: "linear",
+      repeat: -1,
+    });
+  }, []);
 
   return (
     <>
@@ -196,52 +218,151 @@ const Home = () => {
         ))}
 
         {/* Popular Destinations */}
-        <section className="px-4 sm:px-10 md:px-20 py-20">
-          <div className="relative text-center">
-            <p className="text-5xl font-semibold font-serif text-gray-800">
-              Popular <span className="text-orange-400">Destinations</span>
-            </p>
-            <hr className="h-1 w-72 mx-auto my-4 border-t-2 border-gray-300" />
-            <p className="text-2xl font-light font-serif text-gray-700">Find The Perfect Destination To Travel</p>
+        <div>
+      {/* Section: Popular Destinations */}
+      <section className="px-4 sm:px-8 md:px-16 lg:px-24 py-16">
+        <div className="relative text-center">
+          <p className="text-3xl sm:text-4xl md:text-5xl font-semibold font-serif text-gray-800">
+            Popular <span className="text-orange-400">Destinations</span>
+          </p>
+          <hr className="h-1 w-40 sm:w-64 md:w-72 mx-auto my-4 border-t-2 border-gray-300" />
+          <p className="text-lg sm:text-xl font-light font-serif text-gray-700">
+            Find The Perfect Destination To Travel
+          </p>
+        </div>
+
+        {/* Image Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+          {images.map((img, i) => (
+            <div key={i} className="rounded-xl overflow-hidden shadow-lg">
+              <img
+                src={img}
+                alt={`Popular ${i}`}
+                className="w-full h-56 sm:h-64 object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section: Packages Offer */}
+      <div className="h-[80vh] sm:h-[70vh] w-full bg-orange-400 bg-opacity-90 relative text-white px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-0">
+        {/* Social Icons */}
+        <div className="absolute left-2 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 sm:gap-3 p-1 sm:p-2 z-10">
+          <a href="#" className="bg-blue-600 p-2 rounded-full text-white text-sm sm:text-base">F</a>
+          <a href="#" className="bg-pink-500 p-2 rounded-full text-white text-sm sm:text-base">I</a>
+          <a href="#" className="bg-blue-400 p-2 rounded-full text-white text-sm sm:text-base">T</a>
+          <a href="#" className="bg-green-500 p-2 rounded-full text-white text-sm sm:text-base">W</a>
+          <a href="#" className="bg-green-600 p-2 rounded-full text-white text-sm sm:text-base">?</a>
+          <a href="#" className="bg-black p-2 rounded-full text-white text-sm sm:text-base">@</a>
+        </div>
+
+        {/* Main Content */}
+        <div className="h-full w-full flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0">
+          {/* Left Section */}
+          <div className="text-center md:text-left">
+            <div className="mb-4 text-2xl sm:text-3xl">★★★★★</div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">STANDARDIZED</h1>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">PACKAGES</h2>
+
+            {/* Amenities */}
+            <div className="flex justify-center md:justify-start gap-6 sm:gap-12 mt-8 text-sm sm:text-base font-semibold">
+              <div className="text-center">
+                <FaWifi className="text-2xl mx-auto" />
+                <p>Free WiFi</p>
+              </div>
+              <div className="text-center">
+                <MdLunchDining className="text-2xl mx-auto" />
+                <p>Breakfast</p>
+              </div>
+              <div className="text-center">
+                <FaSwimmer className="text-2xl mx-auto" />
+                <p>Pool</p>
+              </div>
+              <div className="text-center">
+                <IoTv className="text-2xl mx-auto" />
+                <p>Television</p>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
-            {[Jaishreeram1, Jaishreeram2, Jaishreeram3, Jaishreeram4, Jaishreeram5, Jaishreeram6].map((img, i) => (
-              <div key={i} className="rounded-xl overflow-hidden shadow-lg">
-                <img src={img} alt={`Popular ${i}`} className="w-full h-64 object-cover" />
-              </div>
-            ))}
-          </div>
-        </section>
-        <div className='h-[70vh] w-full border-2 bg-orange-400 opacity-90'>
-          <div className='h-full w-full border2 flex justify-between p-40 text-white font-sans  font-semibold text-5xl'>
-           <div>
-           <div className='ml-24'>*****</div>
-           <p>Standardized</p>
-           <p className='ml-12'>Packages</p>
-           <div className='h-20 w-full font-light text-3xl border-2 flex justify-between mt-4'>
-           <div>
-           <a href=""><FaWifi/></a>
-           <p className='text-sm font-semibold'>Free WiFi</p>
-           </div>
-           <div>
-           <a href=""><MdLunchDining/></a>
-           <p className='text-sm font-semibold'>BreakFast</p>
-           </div>
-           <div>
-           <a href=""><FaSwimmer/></a>
-           <p className='text-sm font-semibold'>Pool</p>
-           </div>
-           <div>
-           <a href=""><IoTv/></a>
-           <p className='text-sm font-semibold'>Telivision</p>
-           </div>
-           </div>
-           </div>
-            <div>2</div>
+          {/* Right Section */}
+          <div className="relative">
+            {/* Spinning badge */}
+            <div
+              ref={spinRef}
+              className="absolute -left-10 -top-10 sm:-left-14 sm:-top-14 bg-white text-orange-500 rounded-full w-24 h-24 sm:w-28 sm:h-28 flex flex-col items-center justify-center shadow-lg"
+            >
+              <span className="text-lg sm:text-xl font-bold">Go</span>
+              <span className="text-xs sm:text-sm tracking-widest">STAYS</span>
+            </div>
+
+            {/* Spinning discount circle */}
+            <div
+              ref={spinnRef}
+              className="w-56 h-56 sm:w-72 sm:h-72 bg-orange-500 rounded-full flex flex-col items-center justify-center shadow-lg text-white text-xl sm:text-2xl"
+            >
+              <span className="font-semibold">Get Upto</span>
+              <span className="text-4xl sm:text-5xl font-bold">20%</span>
+              <span className="font-semibold">Off</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    </div>
+    <div className="p-6 md:p-12">
+      <div className="grid md:grid-cols-2 gap-8">
+
+        {/* Tips Before Travel */}
+        <div>
+          <h2 className="bg-orange-400 text-white font-semibold px-4 py-2 inline-block text-sm mb-4 uppercase">
+            Tips Before Travel
+          </h2>
+          <ul className="space-y-6">
+            <li className="flex items-center space-x-4">
+              <FaPassport className="text-3xl text-sky-400" />
+              <span className="font-medium">Bring copies of your passport</span>
+            </li>
+            <li className="flex items-center space-x-4">
+              {/* <GiPostStamp className="text-3xl text-sky-400" /> */}
+              <span className="font-medium">Register with your embassy</span>
+            </li>
+            <li className="flex items-center space-x-4">
+              <FaMoneyBillAlt className="text-3xl text-sky-400" />
+              <span className="font-medium">Always have local cash</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Arrangement & Helps */}
+        <div>
+          <h2 className="bg-orange-400 text-white font-semibold px-4 py-2 inline-block text-sm mb-4 uppercase">
+            Arrangement & Helps
+          </h2>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-green-300 p-4 rounded-md flex items-center gap-3">
+              <MdEditLocation className="text-3xl text-white" />
+              <span className="font-semibold text-black">Location Manager</span>
+            </div>
+            <div className="bg-purple-400 p-4 rounded-md flex items-center gap-3">
+              {/* <PiSignpost className="text-3xl text-white" /> */}
+              <span className="font-semibold text-white">Private Guide</span>
+            </div>
+            <div className="bg-red-400 p-4 rounded-md flex items-center gap-3">
+              <MdHotel className="text-3xl text-white" />
+              <span className="font-semibold text-black">Arrangements</span>
+            </div>
+            <div className="bg-yellow-300 p-4 rounded-md flex items-center gap-3">
+              <MdEventNote className="text-3xl text-white" />
+              <span className="font-semibold text-black">Events & Activities</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <Footer/>
     </>
   );
 };

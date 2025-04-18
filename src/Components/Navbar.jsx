@@ -3,13 +3,21 @@ import { FaFacebookSquare, FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { HiMenu, HiX } from "react-icons/hi";
 import Logo from "../assets/logo.png";
-
+import Switch from './Switch';
+// import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
+// const navigate = useNavigate()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+
+  // const handleLogout = ()=>{
+  //   localStorage.removeItem('authToken')
+  //     navigate('/signin')
+  // }
 
   return (
     <>
-      <nav className="w-full border-gray-200">
+      <nav className="w-full border-gray-200 sticky">
         {/* Top Bar */}
         <div className="bg-[#ef950f] text-white py-3 px-4">
           <ul className="flex flex-col md:flex-row justify-center items-center gap-4 text-sm font-semibold text-center md:text-left">
@@ -65,6 +73,9 @@ const Navbar = () => {
             <li><a href="/chardham" className="hover:text-[#ef950f] transition hover:underline">CharDham</a></li>
             <li><a href="/payment" className="hover:text-[#ef950f] transition hover:underline">Payment</a></li>
             <li><a href="/contact-us" className="hover:text-[#ef950f] transition hover:underline">Contact-Us</a></li>
+            <li><a href="/signup" className="hover:text-[#ef950f] transition hover:underline">signup</a></li>
+        <button ><Switch/></button>
+            
           </ul>
         </div>
 
@@ -79,6 +90,7 @@ const Navbar = () => {
               <li><a href="/chardham" className="hover:text-[#ef950f] transition">CharDham</a></li>
               <li><a href="/payment" className="hover:text-[#ef950f] transition">Payment</a></li>
               <li><a href="/contact-us" className="hover:text-[#ef950f] transition">Contact-Us</a></li>
+              <button ><Switch/></button>
             </ul>
           </div>
         )}
