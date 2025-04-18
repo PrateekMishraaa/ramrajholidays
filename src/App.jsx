@@ -37,13 +37,13 @@ const App = () => {
     <>
       <Router>
         <Routes>
-          {/* Public routes */}
+       
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signin' element={<Signin />} />
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           
-          {/* Protected routes */}
+      
           <Route path='/package' element={
             <ProtectedRoute>
               <Package />
@@ -71,7 +71,7 @@ const App = () => {
             </ProtectedRoute>
           } />
           
-          {/* Catch-all route for undefined paths */}
+        
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
