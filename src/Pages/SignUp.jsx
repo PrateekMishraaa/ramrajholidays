@@ -97,7 +97,7 @@ const SignUp = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/api/signup",
+                "https://ramraj-backend.onrender.com/api/signup",
                 dataToSend, 
                 {
                     headers: {

@@ -35,7 +35,7 @@ const Contact = () => {
     try {
       // 2) Send to backend
       await axios.post(
-        "http://localhost:5000/api/query",
+        "https://ramraj-backend.onrender.com/api/query",
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
